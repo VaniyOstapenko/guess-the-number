@@ -7,8 +7,9 @@
 const num = Math.floor(Math.random() * 100);
 alert('угадайте загаданное число');
 let count = 0;
-function searchNum(num, count) {
+function searchNum(num) {
     for (let i = 0; i <= num; i++) {
+        count++;
         let search = prompt('введите предположительное число');
         if (num == search) {
             alert(`${search} -> Поздравляем, вы угадали число! Понадобилось попыток ${count++}`);
@@ -21,5 +22,5 @@ function searchNum(num, count) {
     }
 }
 
-let result = searchNum(num, count)
+let result = searchNum(num)
 console.log(result);
