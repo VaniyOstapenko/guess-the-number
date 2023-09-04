@@ -4,23 +4,31 @@
 // 'Слишком мало, попробуйте еще раз'. Если пользователь угадывает число, то программа должна поздравить 
 // его и вывести сообщение 'Вы угадали, поздравляем!'.
 
-const num = Math.floor(Math.random() * 100);
-alert('угадайте загаданное число');
-let count = 0;
-function searchNum(num) {
-    for (let i = 0; i <= num; i++) {
-        count++;
-        let search = prompt('введите предположительное число');
-        if (num == search) {
-            alert(`${search} -> Поздравляем, вы угадали число! Понадобилось попыток ${count++}`);
-            break;
-        } else if (search > num) {
-            alert(`Мимо, попробуйте число меньше`);
-        } else if (search < num) {
-            alert(`Мимо, попробуйте число больше`);
+class SearchNumber {
+    doSearch(num) {
+        alert('угадайте загаданное число');
+        let start = 0;
+        let count = 0;
+        let end = 100;
+        for (let i = 0; i <= num; i++) {
+            count++;
+            let search = prompt('введите предположительное число');
+            if (num == search) {
+                alert(`${search} -> Поздравляем, вы угадали число! Понадобилось попыток ${count++}`);
+                break;
+            } else if (search > num) {
+                end = search;
+                alert(`Мимо, попробуйте число меньше от ${start} до ${end}`);
+
+            } else if (search < num) {
+                start = search;
+                alert(`Мимо, попробуйте число больше от ${start} до ${end}`);
+            }
         }
     }
 }
 
-let result = searchNum(num)
+
+const searchNumber = new SearchNumber();
+const result = searchNumber.doSearch(Math.floor(Math.random() * 100));
 console.log(result);
